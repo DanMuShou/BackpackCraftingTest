@@ -1,16 +1,17 @@
 ﻿using Godot;
 
-public partial class BaseBackpackCon : Node, IBackpackCon
+public partial class BaseBackpackCon : Control, IBackpackCon
 {
     [Export] private BackpackItem _item;
     public PickedRes ItemRes { get; private set; }
-    private int _itemCount;
+    private int _itemCount = int.MinValue;
 
     public int ItemCount
     {
         get => _itemCount;
-        set
+        private set
         {
+            if (_itemCount == value) return;
             _itemCount = value;
             RefreshItem();
         }
@@ -23,45 +24,64 @@ public partial class BaseBackpackCon : Node, IBackpackCon
         ItemCount = 0;
     }
 
-    private void RefreshItem()
+    protected virtual void RefreshItem()
     {
         if (IsHasItem)
         {
-            _item.Visible = true;
             _item.Texture = ItemRes.BackpackIcon;
             _item.SetItem(_itemCount);
         }
         else
         {
-            _item.Visible = false;
-            _item.Texture = null;
+            _item.Texture = new PlaceholderTexture2D();
             _item.SetItem(_itemCount);
             ItemRes = null;
         }
+
+        // _item.Visible = IsHasItem;
     }
 
-    public bool AddItemRes(PickedRes itemRes)
+    public bool SetRes(PickedRes itemRes, int count = 1)
     {
-        if (!IsHasItem)
-        {
-            ItemRes = itemRes;
-            ItemCount++;
-            return true;
-        }
-        else if (itemRes.UniqueId == ItemRes.UniqueId)
-        {
-            ItemCount++;
-            return true;
-        }
-
-        return false;
+        if (IsHasItem) return false;
+        ItemRes = itemRes;
+        ItemCount = count;
+        return true;
     }
 
-    public PickedRes OutputItemRes()
+    public void RemoveRes()
     {
-        if (!IsHasItem) return null;
-        var itemRes = ItemRes;
-        ItemCount -= 1;
-        return itemRes;
+        if (!IsHasItem) return;
+        ItemCount = 0;
+    }
+
+    public void DecreaseRes(int removeCount = 1)
+    {
+        if (!IsHasItem) return;
+
+        if (removeCount >= ItemCount)
+            ItemCount = 0;
+        else
+            ItemCount -= removeCount;
+    }
+
+    public void IncreaseRes(int addCount = 1)
+    {
+        if (!IsHasItem) return;
+
+        ItemCount += addCount;
+    }
+
+    public void SwapRes(BaseBackpackCon other)
+    {
+        if (other == null) return;
+        var otherRes = other.ItemRes;
+        var otherCount = other.ItemCount;
+
+        other.RemoveRes();
+        other.SetRes(ItemRes, ItemCount);
+
+        RemoveRes();
+        SetRes(otherRes, otherCount);
     }
 }

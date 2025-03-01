@@ -36,109 +36,145 @@ size_flags_horizontal = 3
 columns = 9
 
 [node name="BackpackItemCon" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon2" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon3" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon4" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon5" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon6" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon7" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon8" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon9" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon10" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon11" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon12" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon13" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon14" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon15" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon16" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon17" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon18" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon19" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon20" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon21" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon22" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon23" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon24" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon25" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon26" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon27" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon28" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon29" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon30" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon31" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon32" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon33" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon34" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon35" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon36" parent="PanelContainer/MarginContainer/ItemsCon" instance=ExtResource("2_hp5eq")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2

@@ -33,30 +33,39 @@ mouse_filter = 2
 columns = 3
 
 [node name="BackpackItemCon" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon2" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon3" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon4" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon5" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon6" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon7" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon8" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="BackpackItemCon9" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]

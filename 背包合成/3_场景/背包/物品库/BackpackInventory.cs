@@ -22,28 +22,21 @@ public partial class BackpackInventory : VBoxContainer
             {
                 _itemCons.Add(itemCon);
 
-                itemCon.ItemSelectBut.MouseEntered += () =>
-                {
-                    if (itemCon.IsHasItem) _owner.SignalCenter.EmitIsShowInfo(true, itemCon.ItemRes);
-                };
-                itemCon.ItemSelectBut.MouseExited += () =>
-                {
-                    if (itemCon.IsHasItem) _owner.SignalCenter.EmitIsShowInfo(false, itemCon.ItemRes);
-                };
-
                 itemCon.Index = index;
+                itemCon.BackpackPanel = _owner;
                 itemCon.Init();
             }
         }
     }
 
-    public void AddItem(PickedRes pickedRes)
+    public void AddItems(PickedRes[] itemsRes)
     {
-        foreach (var itemCon in _itemCons)
+        foreach (var res in itemsRes)
         {
-            if (itemCon.AddItemRes(pickedRes))
+            foreach (var con in _itemCons)
             {
-                break;
+                if (con.SetRes(res))
+                    break;
             }
         }
     }

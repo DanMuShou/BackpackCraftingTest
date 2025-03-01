@@ -27,6 +27,8 @@ public partial class ItemInfoPan : PanelContainer
     public void DisplayItemInfo(bool isShow, PickedRes pickedRes)
     {
         Visible = isShow;
+        if (!isShow) return;
+
         _name.Text = pickedRes.Name;
         _description.Text = pickedRes.Description;
     }

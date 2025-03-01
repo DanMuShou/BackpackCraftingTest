@@ -25,16 +25,8 @@ public partial class ItemComposite : CenterContainer
             if (nodes[index] is not BackpackItemCon itemCon) continue;
             _items.Add(itemCon);
             itemCon.Index = index;
+            itemCon.BackpackPanel = _owner;
             itemCon.Init();
-
-            itemCon.ItemSelectBut.MouseEntered += () =>
-            {
-                if (itemCon.IsHasItem) _owner.SignalCenter.EmitIsShowInfo(true, itemCon.ItemRes);
-            };
-            itemCon.ItemSelectBut.MouseExited += () =>
-            {
-                if (itemCon.IsHasItem) _owner.SignalCenter.EmitIsShowInfo(false, itemCon.ItemRes);
-            };
         }
 
         _compositeItem.Init();

@@ -1,7 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://wmo6bfkw0fdd"]
 
 [ext_resource type="Script" uid="uid://dadm652ekttvo" path="res://3_场景/背包/BackpackPanel.cs" id="1_i3aat"]
-[ext_resource type="StyleBox" uid="uid://bywdi64dkjwmi" path="res://2_资源/测试贴图/new_style_box_flat.tres" id="1_t5hcx"]
 [ext_resource type="Resource" uid="uid://cewdsjtwpq1ln" path="res://2_资源/物品资源/BookRes.tres" id="2_ycbe7"]
 [ext_resource type="Resource" uid="uid://7t4v63eqlmh" path="res://2_资源/物品资源/ColoredFeathers.tres" id="3_d2evk"]
 [ext_resource type="Resource" uid="uid://ut0cb2xu1ks5" path="res://2_资源/物品资源/EggRes.tres" id="4_4drcm"]
@@ -10,9 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://c2438fo3sb6xr" path="res://3_场景/背包/物品库/BackpackInventory.tscn" id="7_1khnv"]
 [ext_resource type="PackedScene" uid="uid://bk067kb6eqojd" path="res://3_场景/合成面板/ItemComposite.tscn" id="7_4drcm"]
 [ext_resource type="PackedScene" uid="uid://c7yt55d3eunuk" path="res://3_场景/背包/ItemInfoPan.tscn" id="8_d2evk"]
-[ext_resource type="PackedScene" uid="uid://dp0m8voi84w52" path="res://3_场景/背包/ItemSelectRes.tscn" id="11_1khnv"]
+[ext_resource type="PackedScene" uid="uid://dp0m8voi84w52" path="res://3_场景/背包/ItemSelectCon.tscn" id="11_1khnv"]
+[ext_resource type="PackedScene" uid="uid://dys04wsivitri" path="res://3_场景/背包/容器/BackpackItemCon.tscn" id="12_j6hle"]
 
-[node name="BackpackPanel" type="Control" node_paths=PackedStringArray("SignalCenter", "_backpackInventory", "_itemComposite", "_itemInfoPan", "_itemSelectRes")]
+[node name="BackpackPanel" type="Control" node_paths=PackedStringArray("SignalCenter", "ItemSelectCon", "_backpackInventory", "_itemComposite", "_itemInfoPan")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,10 +22,10 @@ grow_vertical = 2
 script = ExtResource("1_i3aat")
 _pickedRes = Array[Object]([ExtResource("2_ycbe7"), ExtResource("3_d2evk"), ExtResource("4_4drcm"), ExtResource("5_pvyaf")])
 SignalCenter = NodePath("BackpackSignalCenter")
+ItemSelectCon = NodePath("ItemSelectCon")
 _backpackInventory = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/BackpackInventory")
 _itemComposite = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/ItemCompositing")
 _itemInfoPan = NodePath("ItemInfoPan")
-_itemSelectRes = NodePath("ItemSelectRes")
 
 [node name="BackpackSignalCenter" type="Node" parent="."]
 script = ExtResource("6_pvyaf")
@@ -92,20 +92,14 @@ size_flags_horizontal = 0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Panel" type="Panel" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(60, 60)
+[node name="BackpackItemCon" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("12_j6hle")]
 layout_mode = 2
-theme_override_styles/panel = ExtResource("1_t5hcx")
 
-[node name="Panel2" type="Panel" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(60, 60)
+[node name="BackpackItemCon2" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("12_j6hle")]
 layout_mode = 2
-theme_override_styles/panel = ExtResource("1_t5hcx")
 
-[node name="Panel3" type="Panel" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(60, 60)
+[node name="BackpackItemCon3" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("12_j6hle")]
 layout_mode = 2
-theme_override_styles/panel = ExtResource("1_t5hcx")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -126,25 +120,19 @@ size_flags_horizontal = 8
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Panel" type="Panel" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(60, 60)
+[node name="BackpackItemCon" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("12_j6hle")]
 layout_mode = 2
-theme_override_styles/panel = ExtResource("1_t5hcx")
 
-[node name="Panel2" type="Panel" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(60, 60)
+[node name="BackpackItemCon2" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("12_j6hle")]
 layout_mode = 2
-theme_override_styles/panel = ExtResource("1_t5hcx")
 
-[node name="Panel3" type="Panel" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(60, 60)
+[node name="BackpackItemCon3" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("12_j6hle")]
 layout_mode = 2
-theme_override_styles/panel = ExtResource("1_t5hcx")
 
 [node name="ItemInfoPan" parent="." instance=ExtResource("8_d2evk")]
 layout_mode = 0
 offset_right = 200.0
 offset_bottom = 100.0
 
-[node name="ItemSelectRes" parent="." instance=ExtResource("11_1khnv")]
+[node name="ItemSelectCon" parent="." instance=ExtResource("11_1khnv")]
 layout_mode = 0
