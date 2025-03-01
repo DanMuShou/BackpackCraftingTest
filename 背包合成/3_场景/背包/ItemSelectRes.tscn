@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp0m8voi84w52"]
+
+[ext_resource type="Script" uid="uid://del1lqybaykt8" path="res://3_场景/背包/ItemSelectRes.cs" id="1_vqccc"]
+[ext_resource type="PackedScene" uid="uid://ix4l5tr0a1ht" path="res://3_场景/背包/物品/BackpackItem.tscn" id="2_0ewb5"]
+
+[node name="ItemSelectRes" type="MarginContainer" node_paths=PackedStringArray("_item")]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_vqccc")
+_item = NodePath("BackpackItem")
+
+[node name="BackpackItem" parent="." instance=ExtResource("2_0ewb5")]
+layout_mode = 2

@@ -3,7 +3,12 @@ using Godot;
 public partial class BackpackSignalCenter : Node
 {
     [Signal]
-    public delegate void OnIsOutputInfoEventHandler(bool isShow, PickedRes pickedRes);
+    public delegate void OnIsShowInfoEventHandler(bool isShow, PickedRes itemRes);
 
-    public void EmitIsOutputInfo(bool isShow, PickedRes pickedRes) => EmitSignalOnIsOutputInfo(isShow, pickedRes);
+    public void EmitIsShowInfo(bool isShow, PickedRes itemRes) => EmitSignalOnIsShowInfo(isShow, itemRes);
+
+    [Signal]
+    public delegate void OnOutputResEventHandler(PickedRes itemRes);
+
+    public void EmitOutputRes(PickedRes itemRes) => EmitSignalOnOutputRes(itemRes);
 }

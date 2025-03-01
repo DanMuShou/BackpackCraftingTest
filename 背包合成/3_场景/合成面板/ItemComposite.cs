@@ -12,27 +12,29 @@ public partial class ItemComposite : CenterContainer
 
     private List<BackpackItemCon> _items;
 
-    public void Init(BackpackSignalCenter signalCenter)
+    private BackpackPanel _owner;
+
+    public void Init()
     {
         _items = [];
+        _owner = GetOwner() as BackpackPanel;
 
         var nodes = _compositeItemsCon.GetChildren();
         for (var index = 0; index < nodes.Count; index++)
         {
-            if (nodes[index] is not BackpackItemCon item) continue;
-            _items.Add(item);
+            if (nodes[index] is not BackpackItemCon itemCon) continue;
+            _items.Add(itemCon);
+            itemCon.Index = index;
+            itemCon.Init();
 
-            item.MouseEntered += () =>
+            itemCon.ItemSelectBut.MouseEntered += () =>
             {
-                if (item.IsHasItem) signalCenter.EmitIsOutputInfo(true, item.BackpackRes);
+                if (itemCon.IsHasItem) _owner.SignalCenter.EmitIsShowInfo(true, itemCon.ItemRes);
             };
-            item.MouseExited += () =>
+            itemCon.ItemSelectBut.MouseExited += () =>
             {
-                if (item.IsHasItem) signalCenter.EmitIsOutputInfo(false, item.BackpackRes);
+                if (itemCon.IsHasItem) _owner.SignalCenter.EmitIsShowInfo(false, itemCon.ItemRes);
             };
-
-            item.Index = index;
-            item.Init();
         }
 
         _compositeItem.Init();

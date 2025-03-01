@@ -6,8 +6,12 @@ public partial class ItemInfoPan : PanelContainer
     [Export] private Label _description;
     [Export] private Label _other;
 
+    private BackpackPanel _owner;
+
     public void Init()
     {
+        _owner = GetOwner() as BackpackPanel;
+
         _name.Text = "";
         _description.Text = "";
         _other.Text = "";
