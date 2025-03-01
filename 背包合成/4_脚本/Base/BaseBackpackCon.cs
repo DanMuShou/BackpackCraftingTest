@@ -26,6 +26,7 @@ public partial class BaseBackpackCon : Control, IBackpackCon
 
     protected virtual void RefreshItem()
     {
+        GD.Print("刷新");
         if (IsHasItem)
         {
             _item.Texture = ItemRes.BackpackIcon;
@@ -37,7 +38,6 @@ public partial class BaseBackpackCon : Control, IBackpackCon
             _item.SetItem(_itemCount);
             ItemRes = null;
         }
-
         // _item.Visible = IsHasItem;
     }
 

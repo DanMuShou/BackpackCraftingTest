@@ -5,7 +5,6 @@ public partial class BackpackItemCon : BaseBackpackCon
 {
     [Export] public Button ItemSelectBut { get; private set; }
     public int Index { get; set; }
-
     public BackpackPanel BackpackPanel { get; set; }
 
     public override void Init()
