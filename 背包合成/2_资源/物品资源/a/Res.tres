@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PickedRes" load_steps=2 format=3 uid="uid://d3ulu0y3ldnio"]
+
+[ext_resource type="Script" uid="uid://bpj81todcqmnt" path="res://4_脚本/自定义资源/PickedRes.cs" id="1_kvwff"]
+
+[resource]
+script = ExtResource("1_kvwff")
+Name = ""
+Description = ""
+UniqueId = 0
+PickType = 0
+metadata/_custom_type_script = "uid://bpj81todcqmnt"

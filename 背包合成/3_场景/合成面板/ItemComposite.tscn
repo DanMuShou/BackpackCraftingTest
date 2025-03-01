@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk067kb6eqojd"]
+
+[ext_resource type="Script" uid="uid://wardc0r3t04n" path="res://3_场景/合成面板/ItemComposite.cs" id="1_w17sc"]
+[ext_resource type="PackedScene" uid="uid://dys04wsivitri" path="res://3_场景/背包/容器/BackpackItemCon.tscn" id="2_r85vl"]
+
+[node name="ItemComposite" type="CenterContainer" node_paths=PackedStringArray("_compositeItemsCon", "_compositeItem", "_infoLab", "_compositeBut")]
+size_flags_vertical = 3
+script = ExtResource("1_w17sc")
+_compositeItemsCon = NodePath("PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon")
+_compositeItem = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/CompositeItem")
+_infoLab = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/InfoLab")
+_compositeBut = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/CompositeBut")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 30
+
+[node name="CompositingItemsCon" type="GridContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+columns = 3
+
+[node name="BackpackItemCon" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+layout_mode = 2
+
+[node name="BackpackItemCon2" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+layout_mode = 2
+
+[node name="BackpackItemCon3" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+layout_mode = 2
+
+[node name="BackpackItemCon4" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+layout_mode = 2
+
+[node name="BackpackItemCon5" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+layout_mode = 2
+
+[node name="BackpackItemCon6" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+layout_mode = 2
+
+[node name="BackpackItemCon7" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+layout_mode = 2
+
+[node name="BackpackItemCon8" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+layout_mode = 2
+
+[node name="BackpackItemCon9" parent="PanelContainer/MarginContainer/HBoxContainer/CompositingItemsCon" instance=ExtResource("2_r85vl")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CompositeItem" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_r85vl")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="InfoLab" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Infoaaaaaaaaaaaa"
+autowrap_mode = 1
+
+[node name="CompositeBut" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 1
+text = "制作"

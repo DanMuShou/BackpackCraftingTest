@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PickedRes" load_steps=3 format=3 uid="uid://cewdsjtwpq1ln"]
+
+[ext_resource type="Texture2D" uid="uid://cbvyn3guhfce5" path="res://1_资产/测试/21.png" id="1_j5vcj"]
+[ext_resource type="Script" uid="uid://bpj81todcqmnt" path="res://4_脚本/自定义资源/PickedRes.cs" id="1_n63nw"]
+
+[resource]
+script = ExtResource("1_n63nw")
+Name = "书"
+Description = "书"
+UniqueId = 1
+PickType = 0
+BackpackIcon = ExtResource("1_j5vcj")
+metadata/_custom_type_script = "uid://bpj81todcqmnt"
