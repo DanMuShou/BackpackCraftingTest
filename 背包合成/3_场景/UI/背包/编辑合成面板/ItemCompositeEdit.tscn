@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://b6tkd5wn62tb2" path="res://3_场景/UI/背包/查询面板/SearchResourcePanel.tscn" id="3_lhgi2"]
 
 [node name="ItemCompositeEdit" type="HBoxContainer" node_paths=PackedStringArray("_compositePanel", "_searchRes")]
-offset_right = 394.0
-offset_bottom = 235.0
+offset_right = 589.0
+offset_bottom = 338.0
 script = ExtResource("1_0tcrs")
 _compositePanel = NodePath("MarginContainer/CompositePanel")
-_searchRes = NodePath("SearchResourcePanel")
+_searchRes = NodePath("MarginContainer2/TabContainer/SearchResourcePanel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -25,5 +25,22 @@ layout_mode = 2
 [node name="VSeparator" type="VSeparator" parent="."]
 layout_mode = 2
 
-[node name="SearchResourcePanel" parent="." instance=ExtResource("3_lhgi2")]
+[node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 0
+tabs_visible = false
+tab_focus_mode = 1
+
+[node name="SearchResourcePanel" parent="MarginContainer2/TabContainer" instance=ExtResource("3_lhgi2")]
+layout_mode = 2
+metadata/_tab_index = 0

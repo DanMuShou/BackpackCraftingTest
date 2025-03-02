@@ -30,7 +30,7 @@ public partial class BackpackItemRes : Resource, IItemRes
         objId = (objId << 9) | (itemRes.TypeItemId & 0b111111111);
 
         var binary = Convert.ToString(objId, 2);
-        GD.Print($"二进制表示: {binary}");
+        // GD.Print($"二进制表示: {binary}");
 
         return objId;
     }

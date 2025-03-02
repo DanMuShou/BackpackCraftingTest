@@ -6,10 +6,11 @@
 [node name="CompositePanel" type="VBoxContainer" node_paths=PackedStringArray("_gridContainer", "_outputCon", "_compositeBut", "_logLab")]
 theme_override_constants/separation = 10
 script = ExtResource("1_txcph")
+_testDir = "E:/AllProject/Game/Godot/GitProject/BackpackCraftingTest/背包合成/5_测试/配方测试存储"
 _gridContainer = NodePath("HBoxContainer/GridContainer")
 _outputCon = NodePath("HBoxContainer/VBoxContainer/OutputCon")
 _compositeBut = NodePath("HBoxContainer/VBoxContainer/CompositeBut")
-_logLab = NodePath("LogLab")
+_logLab = NodePath("ScrollContainer/LogLab")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -59,7 +60,15 @@ layout_mode = 2
 size_flags_vertical = 10
 text = "存储配方"
 
-[node name="LogLab" type="Label" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="LogLab" type="Label" parent="ScrollContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "存储信息 Log : Loggggggggggggggggggggggggggggggggggggggg"
 autowrap_mode = 1

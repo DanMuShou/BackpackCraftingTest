@@ -3,8 +3,11 @@ using Godot;
 
 public partial class SearchResourcePanel : MarginContainer
 {
-    [Export] private LineEdit _itemNameEdit;
-    [Export] private GridContainer _gridContainer;
+    [Export] private CheckButton _modeBut;
+    [Export] private LineEdit _selectNameEdit;
+    [Export] private TabContainer _tabContainer;
+    [Export] private GridContainer _resCon;
+    [Export] private GridContainer _recipeCon;
     [Export] private PackedScene _itemConPacked;
 
     private ItemCompositeEdit _owner;
@@ -17,13 +20,15 @@ public partial class SearchResourcePanel : MarginContainer
         _owner = GetOwner<ItemCompositeEdit>();
         _itemConList = [];
 
-        _itemNameEdit.TextChanged += OnSelectNameChange;
-
         var resourceManager = SystemManager.GetManager<ResourceManager>();
+
+        _selectNameEdit.TextChanged += OnSelectNameChange;
+        _modeBut.Pressed += () => _tabContainer.CurrentTab = !_modeBut.IsPressed() ? 0 : 1;
+
         foreach (var res in resourceManager.BackpackResDic[EItemType.Food])
         {
             var itemCon = _itemConPacked.Instantiate<BackpackItemCon>();
-            _gridContainer.AddChild(itemCon);
+            _resCon.AddChild(itemCon);
 
             _itemConList.Add(itemCon);
 
@@ -44,7 +49,6 @@ public partial class SearchResourcePanel : MarginContainer
             return;
         }
 
-        GD.Print(text);
         foreach (var itemCon in _itemConList)
         {
             itemCon.Visible = itemCon.ItemRes.Name.Contains(text);
