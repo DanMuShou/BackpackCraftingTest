@@ -1,0 +1,145 @@
+[gd_scene load_steps=9 format=3 uid="uid://wmo6bfkw0fdd"]
+
+[ext_resource type="Script" uid="uid://dadm652ekttvo" path="res://3_场景/UI/背包/BackpackPanel.cs" id="1_i3aat"]
+[ext_resource type="Script" uid="uid://x4f325hiogoi" path="res://4_脚本/信号中心/BackpackSignalCenter.cs" id="6_pvyaf"]
+[ext_resource type="PackedScene" uid="uid://c2438fo3sb6xr" path="res://3_场景/UI/背包/物品库/BackpackInventory.tscn" id="7_1khnv"]
+[ext_resource type="PackedScene" uid="uid://bk067kb6eqojd" path="res://3_场景/UI/背包/合成面板/ItemComposite.tscn" id="7_4drcm"]
+[ext_resource type="PackedScene" uid="uid://c7yt55d3eunuk" path="res://3_场景/UI/背包/ItemInfoPan.tscn" id="8_d2evk"]
+[ext_resource type="PackedScene" uid="uid://bt1u8dd1ap7ui" path="res://3_场景/UI/背包/编辑合成面板/ItemCompositeEdit.tscn" id="8_j6hle"]
+[ext_resource type="PackedScene" uid="uid://dp0m8voi84w52" path="res://3_场景/UI/背包/ItemSelectCon.tscn" id="11_1khnv"]
+[ext_resource type="PackedScene" uid="uid://dys04wsivitri" path="res://3_场景/UI/背包/容器/BackpackItemCon.tscn" id="12_j6hle"]
+
+[node name="BackpackPanel" type="Control" node_paths=PackedStringArray("SignalCenter", "ItemSelectCon", "_backpackInventory", "_itemComposite", "_itemCompositeEdit", "_itemInfoPan")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i3aat")
+SignalCenter = NodePath("BackpackSignalCenter")
+ItemSelectCon = NodePath("ItemSelectCon")
+_backpackInventory = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/BackpackInventory")
+_itemComposite = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/ItemCompositing")
+_itemCompositeEdit = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/ItemCompositeEdit")
+_itemInfoPan = NodePath("ItemInfoPan")
+
+[node name="BackpackSignalCenter" type="Node" parent="."]
+script = ExtResource("6_pvyaf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BackpackInventory" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("7_1khnv")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ItemCompositeEdit" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("8_j6hle")]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemCompositing" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("7_4drcm")]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BackpackItemCon" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("12_j6hle")]
+layout_mode = 2
+
+[node name="BackpackItemCon2" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("12_j6hle")]
+layout_mode = 2
+
+[node name="BackpackItemCon3" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("12_j6hle")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.48, 0.48, 0.48, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BackpackItemCon" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("12_j6hle")]
+layout_mode = 2
+
+[node name="BackpackItemCon2" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("12_j6hle")]
+layout_mode = 2
+
+[node name="BackpackItemCon3" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("12_j6hle")]
+layout_mode = 2
+
+[node name="ItemInfoPan" parent="." instance=ExtResource("8_d2evk")]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 100.0
+
+[node name="ItemSelectCon" parent="." instance=ExtResource("11_1khnv")]
+layout_mode = 0

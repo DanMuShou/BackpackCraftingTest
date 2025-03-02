@@ -3,7 +3,7 @@
 public partial class BaseBackpackCon : Control, IBackpackCon
 {
     [Export] private BackpackItem _item;
-    public PickedRes ItemRes { get; private set; }
+    public BackpackItemRes ItemRes { get; private set; }
     private int _itemCount = int.MinValue;
 
     public int ItemCount
@@ -41,7 +41,7 @@ public partial class BaseBackpackCon : Control, IBackpackCon
         // _item.Visible = IsHasItem;
     }
 
-    public bool SetRes(PickedRes itemRes, int count = 1)
+    public bool SetRes(BackpackItemRes itemRes, int count = 1)
     {
         if (IsHasItem) return false;
         ItemRes = itemRes;

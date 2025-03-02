@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://jdq5cnj6y8xs"]
+
+[ext_resource type="Script" uid="uid://pdfdmj571sj5" path="res://3_场景/Manager/SystemManager.cs" id="1_ntpkp"]
+[ext_resource type="Script" uid="uid://b60v4xliyno6p" path="res://4_脚本/Manager/ResourceManager.cs" id="2_tr8ci"]
+
+[node name="SystemManager" type="Node"]
+script = ExtResource("1_ntpkp")
+
+[node name="ResourceManager" type="Node" parent="."]
+script = ExtResource("2_tr8ci")
+_foodResPath = "res://2_资源/物品资源/Food"

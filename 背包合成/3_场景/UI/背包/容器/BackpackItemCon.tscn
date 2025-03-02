@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dys04wsivitri"]
+
+[ext_resource type="StyleBox" uid="uid://bywdi64dkjwmi" path="res://2_资源/测试贴图/new_style_box_flat.tres" id="1_ar0r1"]
+[ext_resource type="Script" uid="uid://dnyfpit18oa2b" path="res://3_场景/UI/背包/容器/BackpackItemCon.cs" id="1_v4km5"]
+[ext_resource type="PackedScene" uid="uid://ix4l5tr0a1ht" path="res://3_场景/UI/背包/物品/BackpackItem.tscn" id="3_rqhm6"]
+
+[node name="BackpackItemCon" type="Panel" node_paths=PackedStringArray("ItemSelectBut", "_item")]
+custom_minimum_size = Vector2(60, 60)
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("1_ar0r1")
+script = ExtResource("1_v4km5")
+ItemSelectBut = NodePath("MarginContainer/ItemSelectBut")
+_item = NodePath("MarginContainer/BackpackItem")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ItemSelectBut" type="Button" parent="MarginContainer"]
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="BackpackItem" parent="MarginContainer" instance=ExtResource("3_rqhm6")]
+layout_mode = 2

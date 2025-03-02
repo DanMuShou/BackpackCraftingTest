@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BackpackItemRes" load_steps=3 format=3 uid="uid://dy57rpcw78xhj"]
+
+[ext_resource type="Texture2D" uid="uid://b8txewn466pqf" path="res://1_资产/测试/22.png" id="1_axhxj"]
+[ext_resource type="Script" uid="uid://m3jr7vbhqp3s" path="res://4_脚本/自定义资源/BackpackItemRes.cs" id="1_bkvd6"]
+
+[resource]
+script = ExtResource("1_bkvd6")
+IsCanComposite = true
+IsCanDecompose = false
+TypeId = 1
+TypeItemId = 1
+Name = "肉"
+Description = "肉"
+BackpackIcon = ExtResource("1_axhxj")
+metadata/_custom_type_script = "uid://m3jr7vbhqp3s"

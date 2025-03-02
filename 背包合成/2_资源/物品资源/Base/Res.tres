@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BackpackItemRes" load_steps=2 format=3 uid="uid://t31h17j26qy4"]
+
+[ext_resource type="Script" uid="uid://m3jr7vbhqp3s" path="res://4_脚本/自定义资源/BackpackItemRes.cs" id="1_8oehp"]
+
+[resource]
+script = ExtResource("1_8oehp")
+IsCanComposite = false
+IsCanDecompose = false
+TypeId = 0
+ObjId = 0
+Name = ""
+Description = ""
+metadata/_custom_type_script = "uid://m3jr7vbhqp3s"
