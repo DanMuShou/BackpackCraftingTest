@@ -5,11 +5,14 @@ public partial class ResourceManager : Node, IManager
 {
     [Export(PropertyHint.Dir)] private string _foodResPath;
 
-    public Dictionary<string, BackpackItemRes> FoodResDic;
+    public Dictionary<EItemType, List<BackpackItemRes>> BackpackResDic { get; private set; }
 
     public void Init()
     {
-        FoodResDic = [];
+        BackpackResDic = [];
+
+        BackpackResDic.Add(EItemType.Food, []);
+
         LoadFoodRes();
     }
 
@@ -28,9 +31,9 @@ public partial class ResourceManager : Node, IManager
 
             res.TypeId = EItemType.Food;
             res.TypeItemId = i;
-            res.UniqueId = BackpackItemRes.GetItemResId(res);
+            res.UniqueItemId = BackpackItemRes.GetItemResId(res);
 
-            FoodResDic.Add(res.Name, res);
+            BackpackResDic[EItemType.Food].Add(res);
         }
     }
 }

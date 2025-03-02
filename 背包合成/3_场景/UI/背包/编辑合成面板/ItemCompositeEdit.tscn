@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://bt1u8dd1ap7ui"]
 
 [ext_resource type="Script" uid="uid://41my7cg24hjj" path="res://3_场景/UI/背包/编辑合成面板/ItemCompositeEdit.cs" id="1_0tcrs"]
-[ext_resource type="PackedScene" uid="uid://dys04wsivitri" path="res://3_场景/UI/背包/容器/BackpackItemCon.tscn" id="1_wx54g"]
+[ext_resource type="PackedScene" uid="uid://bbhww64otxq48" path="res://3_场景/UI/背包/合成面板/合成台/CompositePanel.tscn" id="2_lhgi2"]
 [ext_resource type="PackedScene" uid="uid://b6tkd5wn62tb2" path="res://3_场景/UI/背包/查询面板/SearchResourcePanel.tscn" id="3_lhgi2"]
 
-[node name="ItemCompositeEdit" type="HBoxContainer" node_paths=PackedStringArray("_searchRes")]
+[node name="ItemCompositeEdit" type="HBoxContainer" node_paths=PackedStringArray("_compositePanel", "_searchRes")]
 offset_right = 394.0
 offset_bottom = 235.0
-size_flags_vertical = 3
 script = ExtResource("1_0tcrs")
+_compositePanel = NodePath("MarginContainer/CompositePanel")
 _searchRes = NodePath("SearchResourcePanel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -19,62 +19,8 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="CompositePanel" parent="MarginContainer" instance=ExtResource("2_lhgi2")]
 layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-columns = 3
-
-[node name="BackpackItemCon" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_wx54g")]
-layout_mode = 2
-
-[node name="BackpackItemCon2" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_wx54g")]
-layout_mode = 2
-
-[node name="BackpackItemCon3" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_wx54g")]
-layout_mode = 2
-
-[node name="BackpackItemCon4" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_wx54g")]
-layout_mode = 2
-
-[node name="BackpackItemCon5" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_wx54g")]
-layout_mode = 2
-
-[node name="BackpackItemCon6" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_wx54g")]
-layout_mode = 2
-
-[node name="BackpackItemCon7" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_wx54g")]
-layout_mode = 2
-
-[node name="BackpackItemCon8" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_wx54g")]
-layout_mode = 2
-
-[node name="BackpackItemCon9" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" instance=ExtResource("1_wx54g")]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="BackpackItemCon" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_wx54g")]
-custom_minimum_size = Vector2(90, 90)
-layout_mode = 2
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 10
-text = "存储配方"
-
-[node name="PrintInfo" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "存储信息 Log : Loggggggggggggggggggggggggggggggggggggggg"
-autowrap_mode = 1
 
 [node name="VSeparator" type="VSeparator" parent="."]
 layout_mode = 2

@@ -10,6 +10,7 @@ public partial class BackpackItemCon : BaseBackpackCon
     public override void Init()
     {
         base.Init();
+
         ItemSelectBut.MouseEntered += OnButMouseEntered;
         ItemSelectBut.MouseExited += OnButMouseExited;
         ItemSelectBut.Pressed += OnButMousePressed;

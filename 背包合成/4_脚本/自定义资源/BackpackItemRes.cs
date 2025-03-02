@@ -14,7 +14,7 @@ public partial class BackpackItemRes : Resource, IItemRes
 
     public EItemType TypeId { get; set; }
     public int TypeItemId { get; set; }
-    public int UniqueId { get; set; }
+    public int UniqueItemId { get; set; }
 
     public static int GetItemResId(BackpackItemRes itemRes)
     {

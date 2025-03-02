@@ -65,6 +65,7 @@ layout_mode = 2
 
 [node name="ItemCompositeEdit" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("8_j6hle")]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
