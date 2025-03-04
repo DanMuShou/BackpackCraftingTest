@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=3 uid="uid://dw8mg7dvvilj6"]
+
+[ext_resource type="Script" uid="uid://dadm652ekttvo" path="res://3_场景/UI/背包/BackpackPanel.cs" id="1_v2g06"]
+[ext_resource type="Script" uid="uid://x4f325hiogoi" path="res://4_脚本/BackpackCenter/Backpack/BackpackSignalCenter.cs" id="2_8155r"]
+[ext_resource type="PackedScene" uid="uid://c2438fo3sb6xr" path="res://3_场景/UI/背包/物品库/BackpackInventory.tscn" id="2_rnj5f"]
+[ext_resource type="Script" uid="uid://bocwjtm5mg2nc" path="res://4_脚本/BackpackCenter/Backpack/BackpackItemGestureCenter.cs" id="3_adjnv"]
+[ext_resource type="PackedScene" uid="uid://bbhww64otxq48" path="res://3_场景/UI/背包/合成面板/合成台/RecipeCompositePanel.tscn" id="5_adjnv"]
+[ext_resource type="PackedScene" uid="uid://btct5pk13cxh3" path="res://3_场景/UI/背包/合成面板/ItemComposite.tscn" id="6_k13kg"]
+[ext_resource type="PackedScene" uid="uid://c3qdjdc4o3t8c" path="res://3_场景/UI/背包/查询面板/ItemRecipeSearchPanel.tscn" id="6_ok50y"]
+[ext_resource type="PackedScene" uid="uid://c7yt55d3eunuk" path="res://3_场景/UI/背包/ItemInfoPan.tscn" id="8_adjnv"]
+[ext_resource type="PackedScene" uid="uid://dp0m8voi84w52" path="res://3_场景/UI/背包/BackpackSelectItem.tscn" id="9_ok50y"]
+
+[node name="BackpackPanel" type="Control" node_paths=PackedStringArray("SignalCenter", "GestureCenter", "BackpackSelectItem", "_backpackInventory", "_recipeCompositePanel", "_itemRecipeSearchPanel", "_itemComposite", "_itemInfoPan")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v2g06")
+SignalCenter = NodePath("SignalCenter")
+GestureCenter = NodePath("GestureCenter")
+BackpackSelectItem = NodePath("BackpackSelectItem")
+_backpackInventory = NodePath("MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer/BackpackInventory")
+_recipeCompositePanel = NodePath("MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/RecipeCompositePanel")
+_itemRecipeSearchPanel = NodePath("MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer2/ItemRecipeSearchPanel")
+_itemComposite = NodePath("MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2/MarginContainer/ItemComposite")
+_itemInfoPan = NodePath("ItemInfoPan")
+
+[node name="SignalCenter" type="Node" parent="."]
+script = ExtResource("2_8155r")
+
+[node name="GestureCenter" type="Node" parent="."]
+script = ExtResource("3_adjnv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BackpackInventory" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer" instance=ExtResource("2_rnj5f")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RecipeCompositePanel" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer" instance=ExtResource("5_adjnv")]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_bottom = 10
+
+[node name="ItemRecipeSearchPanel" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer2" instance=ExtResource("6_ok50y")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ItemComposite" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2/MarginContainer" instance=ExtResource("6_k13kg")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ItemInfoPan" parent="." instance=ExtResource("8_adjnv")]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 160.0
+
+[node name="BackpackSelectItem" parent="." instance=ExtResource("9_ok50y")]
+layout_mode = 0

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://jdq5cnj6y8xs"]
+
+[ext_resource type="Script" uid="uid://pdfdmj571sj5" path="res://3_场景/Manager/SystemManager.cs" id="1_ntpkp"]
+[ext_resource type="Script" uid="uid://b60v4xliyno6p" path="res://4_脚本/Manager/ResourceManager.cs" id="2_tr8ci"]
+[ext_resource type="Script" uid="uid://dbue1vb7jm16b" path="res://4_脚本/Manager/ReadWritManager.cs" id="3_t6edp"]
+
+[node name="SystemManager" type="Node"]
+script = ExtResource("1_ntpkp")
+
+[node name="ReadWriteManager" type="Node" parent="."]
+script = ExtResource("3_t6edp")
+
+[node name="ResourceManager" type="Node" parent="."]
+script = ExtResource("2_tr8ci")
+_foodResPath = "res://2_资源/物品资源/Food"
+_recipePath = "E:/AllProject/Game/Godot/GitProject/BackpackCraftingTest/背包合成2.0/5_测试/配方测试存储/Recipe.mRec"

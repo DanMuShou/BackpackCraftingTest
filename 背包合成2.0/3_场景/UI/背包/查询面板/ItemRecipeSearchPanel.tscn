@@ -1,0 +1,83 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3qdjdc4o3t8c"]
+
+[ext_resource type="Script" uid="uid://blbmjg484gnq2" path="res://3_场景/UI/背包/查询面板/ItemRecipeSearchPanel.cs" id="1_t4vnb"]
+[ext_resource type="PackedScene" uid="uid://dys04wsivitri" path="res://3_场景/UI/背包/背包物品/BackpackItem.tscn" id="2_eecia"]
+
+[node name="ItemRecipeSearchPanel" type="VBoxContainer" node_paths=PackedStringArray("_searchBut", "_modeBut", "_selectNameEdit", "_tabContainer", "_resourceContainer", "_recipeContainer")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t4vnb")
+_searchBut = NodePath("ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/CheckButton")
+_modeBut = NodePath("ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/CheckButton")
+_selectNameEdit = NodePath("ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/LineEdit")
+_tabContainer = NodePath("ScrollContainer/MarginContainer/VBoxContainer/TabContainer")
+_resourceContainer = NodePath("ScrollContainer/MarginContainer/VBoxContainer/TabContainer/MarginContainer/ResCon")
+_recipeContainer = NodePath("ScrollContainer/MarginContainer/VBoxContainer/TabContainer/MarginContainer2/RecipeCon")
+_itemPacked = ExtResource("2_eecia")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "配方搜索"
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "名称"
+alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+tabs_visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+metadata/_tab_index = 0
+
+[node name="ResCon" type="GridContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/TabContainer/MarginContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+metadata/_tab_index = 1
+
+[node name="RecipeCon" type="GridContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/TabContainer/MarginContainer2"]
+layout_mode = 2
+columns = 5

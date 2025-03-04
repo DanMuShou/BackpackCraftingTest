@@ -1,9 +1,0 @@
-<Project Sdk="Godot.NET.Sdk/4.4.0-rc.3">
-    <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <EnableDynamicLoading>true</EnableDynamicLoading>
-    </PropertyGroup>
-    <ItemGroup>
-        <Folder Include="4_脚本\结构体\"/>
-    </ItemGroup>
-</Project>
