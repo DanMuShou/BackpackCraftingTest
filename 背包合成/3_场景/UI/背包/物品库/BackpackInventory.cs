@@ -1,26 +1,26 @@
+using System;
 using Godot;
 using System.Collections.Generic;
+using System.Linq;
 
-public partial class BackpackInventory : VBoxContainer
+public partial class BackpackInventory : BaseGesturePanel
 {
     [Export] private GridContainer _itemsCon;
     [Export] private PackedScene _backpackItemCon;
-
-    private List<BackpackItemCon> _itemCons;
-
     private BackpackPanel _owner;
 
-    public void Init()
+    public override void Init()
     {
-        _itemCons = [];
         _owner = GetOwner() as BackpackPanel;
+
+        base.Init();
 
         var nodes = _itemsCon.GetChildren();
         for (var index = 0; index < nodes.Count; index++)
         {
             if (nodes[index] is BackpackItemCon itemCon)
             {
-                _itemCons.Add(itemCon);
+                _backpackGestureCons.Add(itemCon);
 
                 itemCon.Index = index;
                 itemCon.BackpackPanel = _owner;
@@ -33,7 +33,7 @@ public partial class BackpackInventory : VBoxContainer
     {
         foreach (var res in itemsRes)
         {
-            foreach (var con in _itemCons)
+            foreach (var con in _backpackGestureCons)
             {
                 if (con.SetRes(res))
                     break;

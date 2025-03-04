@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://wmo6bfkw0fdd"]
+[gd_scene load_steps=10 format=3 uid="uid://wmo6bfkw0fdd"]
 
 [ext_resource type="Script" uid="uid://dadm652ekttvo" path="res://3_场景/UI/背包/BackpackPanel.cs" id="1_i3aat"]
-[ext_resource type="Script" uid="uid://x4f325hiogoi" path="res://4_脚本/信号中心/BackpackSignalCenter.cs" id="6_pvyaf"]
+[ext_resource type="Script" uid="uid://dygopdkfye4ht" path="res://4_脚本/处理中心/Backpack/BackpackGestureCenter.cs" id="3_adjnv"]
+[ext_resource type="Script" uid="uid://x4f325hiogoi" path="res://4_脚本/处理中心/Backpack/BackpackSignalCenter.cs" id="6_pvyaf"]
 [ext_resource type="PackedScene" uid="uid://c2438fo3sb6xr" path="res://3_场景/UI/背包/物品库/BackpackInventory.tscn" id="7_1khnv"]
 [ext_resource type="PackedScene" uid="uid://bk067kb6eqojd" path="res://3_场景/UI/背包/合成面板/ItemComposite.tscn" id="7_4drcm"]
 [ext_resource type="PackedScene" uid="uid://c7yt55d3eunuk" path="res://3_场景/UI/背包/ItemInfoPan.tscn" id="8_d2evk"]
@@ -26,6 +27,9 @@ _itemInfoPan = NodePath("ItemInfoPan")
 
 [node name="BackpackSignalCenter" type="Node" parent="."]
 script = ExtResource("6_pvyaf")
+
+[node name="BackpackGestureCenter" type="Node" parent="."]
+script = ExtResource("3_adjnv")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

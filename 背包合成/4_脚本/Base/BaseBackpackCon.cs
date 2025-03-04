@@ -6,7 +6,9 @@ public partial class BaseBackpackCon : Control, IBackpackCon
     public BackpackItemRes ItemRes { get; private set; }
     public bool LockCon { get; set; } = false;
     public bool IsCanChange { get; set; } = true;
+
     private int _itemCount = int.MinValue;
+    private Rect2 _conRect;
 
     public int ItemCount
     {
@@ -23,6 +25,8 @@ public partial class BaseBackpackCon : Control, IBackpackCon
 
     public virtual void Init()
     {
+        _conRect = new Rect2(GlobalPosition, Size);
+
         ItemCount = 0;
     }
 
@@ -40,8 +44,11 @@ public partial class BaseBackpackCon : Control, IBackpackCon
             _item.SetItem(_itemCount);
             ItemRes = null;
         }
+
+        // _conRect = new Rect2(GlobalPosition, Size);      ?????
         // _item.Visible = IsHasItem;
     }
+
 
     public bool SetRes(BackpackItemRes itemRes, int count = 1)
     {
@@ -108,4 +115,6 @@ public partial class BaseBackpackCon : Control, IBackpackCon
             other.SetRes(ItemRes);
         }
     }
+
+    public bool ContainsPoint(Vector2 point) => _conRect.HasPoint(point);
 }
