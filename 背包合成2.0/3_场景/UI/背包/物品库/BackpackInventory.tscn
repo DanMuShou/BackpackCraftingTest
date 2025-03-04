@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2438fo3sb6xr"]
+[gd_scene load_steps=5 format=3 uid="uid://c2438fo3sb6xr"]
 
 [ext_resource type="Script" uid="uid://by7aapuds5fh5" path="res://3_场景/UI/背包/物品库/BackpackInventory.cs" id="1_ojg72"]
 [ext_resource type="Resource" uid="uid://cl6bofodlqbd8" path="res://2_资源/物品资源/Food/CandyRes.tres" id="2_7kw3k"]
 [ext_resource type="PackedScene" uid="uid://dys04wsivitri" path="res://3_场景/UI/背包/背包物品/BackpackItem.tscn" id="2_hp5eq"]
+[ext_resource type="Resource" uid="uid://dy57rpcw78xhj" path="res://2_资源/物品资源/Food/MeetRes.tres" id="3_gvc3i"]
 
 [node name="BackpackInventory" type="VBoxContainer" node_paths=PackedStringArray("_itemsContainer")]
 anchors_preset = 15
@@ -11,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ojg72")
-text = Array[Object]([ExtResource("2_7kw3k"), ExtResource("2_7kw3k")])
+text = Array[Object]([ExtResource("2_7kw3k"), ExtResource("2_7kw3k"), ExtResource("3_gvc3i"), ExtResource("3_gvc3i"), ExtResource("3_gvc3i")])
 _itemsContainer = NodePath("PanelContainer/CenterContainer/MarginContainer/ItemsCon")
 
 [node name="Label" type="Label" parent="."]

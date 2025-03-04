@@ -9,10 +9,10 @@ public partial class BaseBackpackItem : Control, IBackpackContainer
     private int _itemCount = int.MinValue;
     private Rect2 _rect;
 
-    private int ItemCount
+    public int ItemCount
     {
         get => _itemCount;
-        set
+        private set
         {
             if (_itemCount == value) return;
             _itemCount = value;

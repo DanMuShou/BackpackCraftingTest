@@ -18,6 +18,7 @@ public partial class BaseBackpackItemContainerPanel : Control, IBackpackItemCont
             {
                 BackpackItems.Add(item);
                 item.OwnerPanel = this;
+                item.SelectItem = BackpackPanel.BackpackSelectItem;
                 item.Index = i;
                 item.Init();
             }
