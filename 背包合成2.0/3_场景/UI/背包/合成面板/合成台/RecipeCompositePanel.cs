@@ -42,7 +42,7 @@ public partial class RecipeCompositePanel : VBoxContainer
 
     private void OnCompositeButPressed()
     {
-        if (!_itemCons.Select(con => con.IsHasItem).Any() || !_output.IsHasItem)
+        if (!_itemCons.Select(con => con.HasItem).Any() || !_output.HasItem)
         {
             _logLab.Text = "物品不正确";
             return;
@@ -59,7 +59,7 @@ public partial class RecipeCompositePanel : VBoxContainer
         List<int> itemUIds = [];
         for (var i = 0; i < _itemCons.Length; i++)
         {
-            if (!_itemCons[i].IsHasItem) continue;
+            if (!_itemCons[i].HasItem) continue;
 
             locInfo |= 1 << i;
             itemUIds.Add(_itemCons[i].ItemRes.UniqueItemId);

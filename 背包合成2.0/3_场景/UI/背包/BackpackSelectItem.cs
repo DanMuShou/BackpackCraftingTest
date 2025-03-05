@@ -21,6 +21,6 @@ public partial class BackpackSelectItem : BaseBackpackItem
     protected override void RefreshItem()
     {
         base.RefreshItem();
-        Visible = IsHasItem;
+        Visible = HasItem;
     }
 }

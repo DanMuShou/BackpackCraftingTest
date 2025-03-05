@@ -4,4 +4,5 @@ using Godot;
 
 public interface IBackpackGesturePanel
 {
+    Type GesturePanelType { get; }
 }

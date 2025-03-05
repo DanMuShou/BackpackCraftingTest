@@ -1,5 +1,7 @@
+using System;
 using Godot;
 using System.Collections.Generic;
+using System.Linq;
 
 public enum EGestureType
 {
@@ -14,37 +16,31 @@ public partial class BackpackItemGestureCenter : Node
 {
     public BackpackPanel BackpackPanel { get; set; }
     public BaseBackpackItem SourceItem { get; set; }
-    public EGestureType CurrentGestureMode { get; set; }
+    public EGestureType DragGestureMode { get; private set; }
 
-    private IBackpackGesturePanel _activePanel;
-
-    private HashSet<IBackpackGestureItem> _affectItems;
+    public Type ActivePanelType { get; set; }
+    public bool IsMouseLeftOrRightPress => DragGestureMode != EGestureType.None;
+    private HashSet<BaseBackpackItem> _affectItems;
 
     public void Init()
     {
         _affectItems = [];
-        CurrentGestureMode = EGestureType.None;
+        DragGestureMode = EGestureType.None;
     }
 
     public override void _Input(InputEvent @event)
     {
-        if (!SourceItem.IsHasItem) return;
+        if (!SourceItem.HasItem) return;
 
-        switch (@event)
-        {
-            case InputEventMouseButton mouseEvent:
-                SetCurrenMode(mouseEvent);
-                break;
-            case InputEventMouseMotion motionEvent:
-                break;
-        }
+        if (@event is InputEventMouseButton mouseEvent)
+            SetCurrenMode(mouseEvent);
     }
 
     private void SetCurrenMode(InputEventMouseButton mouseEvent)
     {
         if (mouseEvent.Pressed)
         {
-            CurrentGestureMode = mouseEvent.ButtonIndex switch
+            DragGestureMode = mouseEvent.ButtonIndex switch
             {
                 MouseButton.Left when mouseEvent.ShiftPressed => EGestureType.LeftShift,
                 MouseButton.Right when mouseEvent.ShiftPressed => EGestureType.RightShift,
@@ -55,16 +51,47 @@ public partial class BackpackItemGestureCenter : Node
         }
         else if (mouseEvent.IsReleased())
         {
-            CurrentGestureMode = EGestureType.None;
+            ResetMode();
         }
     }
 
-    private void MouseMoveWithPressed(InputEventMouseMotion motionEvent)
+    private void UpdateAffectItem()
     {
+        if (ActivePanelType == null) return;
+        var averageCount = SourceItem.ItemCount / _affectItems.Count;
+        foreach (var item in _affectItems)
+        {
+            if (!item.HasItem)
+            {
+                item.SetRes(SourceItem.ItemRes, averageCount);
+            }
+            else
+            {
+                item.SetCount(averageCount);
+            }
+        }
     }
 
-    public void StartGesture(IBackpackGesturePanel activePanel)
+    private void A()
     {
-        _activePanel = activePanel;
+        if (ActivePanelType == null) return;
+        var averageCount = SourceItem.ItemCount / _affectItems.Count;
+        SourceItem.DecreaseRes(averageCount * _affectItems.Count);
+    }
+
+    private void ResetMode()
+    {
+        DragGestureMode = EGestureType.None;
+        ActivePanelType = null;
+        _affectItems.Clear();
+    }
+
+
+    public void AddAffectItem(BaseBackpackItem affectItem)
+    {
+        if (_affectItems.Add(affectItem))
+        {
+            UpdateAffectItem();
+        }
     }
 }

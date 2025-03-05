@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 
 public partial class BaseBackpackItemContainerPanel : Control, IBackpackItemContainer, IBackpackGesturePanel
 {
     [Export] private Control _itemsContainer;
+
+    public Type GesturePanelType { get; protected set; }
     protected HashSet<BackpackItem> BackpackItems;
     public BackpackPanel BackpackPanel { get; set; }
 
@@ -19,6 +22,7 @@ public partial class BaseBackpackItemContainerPanel : Control, IBackpackItemCont
                 BackpackItems.Add(item);
                 item.OwnerPanel = this;
                 item.SelectItem = BackpackPanel.BackpackSelectItem;
+                item.GestureCenter = BackpackPanel.GestureCenter;
                 item.Index = i;
                 item.Init();
             }

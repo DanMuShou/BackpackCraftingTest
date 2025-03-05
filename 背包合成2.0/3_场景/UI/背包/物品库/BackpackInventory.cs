@@ -10,6 +10,7 @@ public partial class BackpackInventory : BaseBackpackItemContainerPanel
     public override void Init()
     {
         _owner = GetOwner<BackpackPanel>();
+        GesturePanelType = GetType();
         base.Init();
         AddItems(text);
     }

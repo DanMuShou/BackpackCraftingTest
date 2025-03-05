@@ -6,24 +6,38 @@ public partial class BackpackItem : BaseBackpackItem, IBackpackGestureItem
 
     public BaseBackpackItemContainerPanel OwnerPanel { get; set; }
     public BaseBackpackItem SelectItem { get; set; }
+    public BackpackItemGestureCenter GestureCenter { get; set; }
     public int Index { get; set; }
 
     public override void Init()
     {
         base.Init();
 
-        _selectButton.MouseEntered += SelectButtonOnMouseEntered;
-        _selectButton.MouseExited += SelectButtonOnMouseExited;
+        _selectButton.MouseEntered += () => HandleMouseEnterOrExit(true);
+        _selectButton.MouseExited += () => HandleMouseEnterOrExit(false);
         _selectButton.Pressed += SelectButtonOnPressed;
     }
 
 
-    private void SelectButtonOnMouseEntered()
+    private void HandleMouseEnterOrExit(bool isMouseEntered)
     {
-    }
+        if (!SelectItem.HasItem || !GestureCenter.IsMouseLeftOrRightPress || HasItem) return;
 
-    private void SelectButtonOnMouseExited()
-    {
+        if (isMouseEntered)
+        {
+            if (GestureCenter.ActivePanelType == OwnerPanel.GesturePanelType)
+            {
+                GestureCenter.AddAffectItem(this);
+            }
+        }
+        else
+        {
+            if (GestureCenter.ActivePanelType == null)
+            {
+                GestureCenter.ActivePanelType = OwnerPanel.GesturePanelType;
+                GestureCenter.AddAffectItem(this);
+            }
+        }
     }
 
     private void SelectButtonOnPressed()
@@ -36,12 +50,12 @@ public partial class BackpackItem : BaseBackpackItem, IBackpackGestureItem
 
     private void HandleLeftMouseClick()
     {
-        if (!SelectItem.IsHasItem && !IsHasItem) return;
+        if (!SelectItem.HasItem && !HasItem) return;
 
-        if (SelectItem.IsHasItem && (IsHasItem && SelectItem.ItemRes == ItemRes))
+        if (SelectItem.HasItem && (HasItem && SelectItem.ItemRes == ItemRes))
         {
-            SelectItem.IncreaseRes(ItemCount);
-            RemoveRes();
+            IncreaseRes(SelectItem.ItemCount);
+            SelectItem.RemoveRes();
         }
         else
         {
@@ -51,9 +65,20 @@ public partial class BackpackItem : BaseBackpackItem, IBackpackGestureItem
 
     private void HandleRightMouseClick()
     {
-        if (!SelectItem.IsHasItem && IsHasItem)
+        if (!SelectItem.HasItem && HasItem)
         {
-            SelectItem.SetRes(ItemRes, ItemCount);
+            SelectItem.SetRes(ItemRes, ItemCount / 2);
+            DecreaseRes(ItemCount / 2);
+        }
+        else if (SelectItem.HasItem && HasItem && SelectItem.ItemRes == ItemRes)
+        {
+            IncreaseRes();
+            SelectItem.DecreaseRes();
+        }
+        else if (SelectItem.HasItem && !HasItem)
+        {
+            SetRes(SelectItem.ItemRes);
+            SelectItem.DecreaseRes();
         }
     }
 }

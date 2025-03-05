@@ -14,13 +14,13 @@ public partial class BaseBackpackItem : Control, IBackpackContainer
         get => _itemCount;
         private set
         {
-            if (_itemCount == value) return;
+            if (_itemCount == value || value < 0) return;
             _itemCount = value;
             RefreshItem();
         }
     }
 
-    public bool IsHasItem => _itemCount > 0;
+    public bool HasItem => _itemCount > 0;
 
     public virtual void Init()
     {
@@ -35,7 +35,7 @@ public partial class BaseBackpackItem : Control, IBackpackContainer
 
     protected virtual void RefreshItem()
     {
-        if (IsHasItem)
+        if (HasItem)
         {
             _itemInfo.Texture = ItemRes.BackpackIcon;
             _itemInfo.SetItemLabel(_itemCount == 0 ? "" : ItemCount.ToString());
@@ -53,13 +53,13 @@ public partial class BaseBackpackItem : Control, IBackpackContainer
     {
         if (IsCanChange)
         {
-            if (IsHasItem) return false;
+            if (HasItem) return false;
             ItemRes = itemRes;
             ItemCount = count;
         }
         else
         {
-            if (IsHasItem) return false;
+            if (HasItem) return false;
             ItemRes = itemRes;
             ItemCount = 1;
         }
@@ -67,17 +67,25 @@ public partial class BaseBackpackItem : Control, IBackpackContainer
         return true;
     }
 
+    public void SetCount(int count)
+    {
+        if (!IsCanChange) return;
+        if (!HasItem) return;
+
+        ItemCount = count;
+    }
+
     public void RemoveRes()
     {
         if (!IsCanChange) return;
-        if (!IsHasItem) return;
+        if (!HasItem) return;
         ItemCount = 0;
     }
 
     public void DecreaseRes(int removeCount = 1)
     {
         if (!IsCanChange) return;
-        if (!IsHasItem) return;
+        if (!HasItem) return;
 
         if (removeCount >= ItemCount)
             ItemCount = 0;
@@ -88,7 +96,7 @@ public partial class BaseBackpackItem : Control, IBackpackContainer
     public void IncreaseRes(int addCount = 1)
     {
         if (!IsCanChange) return;
-        if (!IsHasItem) return;
+        if (!HasItem) return;
 
         ItemCount += addCount;
     }
