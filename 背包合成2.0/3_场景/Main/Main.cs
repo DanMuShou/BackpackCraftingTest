@@ -10,5 +10,7 @@ public partial class Main : Node
     {
         _systemManager.Init();
         _backpackPanel.Init();
+
+        _backpackPanel.Open = false;
     }
 }

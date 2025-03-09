@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4xbyoq2xmb42"]
+
+[ext_resource type="Texture2D" uid="uid://uetgggepxoxb" path="res://1_资产/测试/gBot_pieces.png" id="1_aluhb"]
+
+[node name="Test骨骼" type="Node2D"]
+
+[node name="robot" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Lef" type="Polygon2D" parent="robot"]
+position = Vector2(-175.984, 125.496)
+texture = ExtResource("1_aluhb")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(221.608, 26.0868, 180.636, 48.9003, 186.22, 181.131, 183.427, 295.201, 221.607, 360.851, 277.013, 346.883, 295.637, 301.254, 268.164, 255.625, 250.937, 193.234, 282.601, 47.4982)
+uv = PackedVector2Array(221.608, 26.0868, 180.636, 48.9003, 186.22, 181.131, 183.427, 295.201, 221.607, 360.851, 277.013, 346.883, 292.789, 303.885, 268.164, 255.625, 250.937, 193.234, 282.601, 47.4982)
+bones = ["kua", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "kua/fu", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "kua/fu/you", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "kua/fu/you/xiong", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "kua/fu/gebo", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0.38, 0), "kua/fu/Bone2D", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+metadata/_edit_lock_ = true
+
+[node name="Body" type="Polygon2D" parent="robot"]
+position = Vector2(-447.984, 69.4958)
+texture = ExtResource("1_aluhb")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(433.801, 18.5042, 384.547, 48.1626, 385.606, 79.9395, 336.881, 124.957, 342.178, 196.984, 372.895, 239.883, 343.237, 282.252, 359.655, 329.388, 421.09, 350.573, 479.877, 330.447, 491.529, 267.423, 472.992, 253.124, 531.25, 168.915, 488.881, 80.9988, 481.996, 31.215)
+uv = PackedVector2Array(433.801, 18.5042, 384.547, 48.1626, 385.606, 79.9395, 336.881, 124.957, 342.178, 196.984, 372.895, 239.883, 343.237, 282.252, 359.655, 329.388, 421.09, 350.573, 479.877, 330.447, 491.529, 267.423, 472.992, 253.124, 531.25, 168.915, 488.881, 80.9988, 481.996, 31.215)
+bones = ["kua", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "kua/fu", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "kua/fu/you", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "kua/fu/you/xiong", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "kua/fu/gebo", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "kua/fu/Bone2D", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+metadata/_edit_lock_ = true
+
+[node name="r" type="Polygon2D" parent="robot"]
+position = Vector2(-175.984, 133.496)
+texture = ExtResource("1_aluhb")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(80.2518, 16.4647, 36.6331, 34.3933, 30.4007, 189.857, 23.9842, 275.527, 44.6703, 349.932, 76.8646, 365.7, 111.24, 355.603, 124.003, 341.9, 131.176, 323.426, 128.781, 288.637, 113.157, 259.762, 108.211, 198.255, 97.2096, 187.627, 127.546, 92.2764, 131.919, 35.0334)
+uv = PackedVector2Array(79.7714, 16.4927, 36.1951, 34.5242, 30.33, 190.002, 24.1159, 275.687, 44.9778, 350.043, 77.2092, 365.735, 111.561, 355.557, 134.462, 324.597, 132.76, 323.749, 128.943, 288.549, 113.251, 259.712, 108.16, 198.217, 97.1335, 187.614, 127.244, 92.1924, 131.483, 34.9392)
+bones = ["kua", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "kua/fu", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "kua/fu/you", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "kua/fu/you/xiong", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "kua/fu/gebo", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "kua/fu/Bone2D", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+metadata/_edit_lock_ = true
+
+[node name="Head" type="Node2D" parent="robot"]
+metadata/_edit_lock_ = true
+
+[node name="Polygon2D4" type="Polygon2D" parent="robot/Head"]
+position = Vector2(-672, -456)
+texture = ExtResource("1_aluhb")
+skeleton = NodePath("../../../Skeleton2D")
+polygon = PackedVector2Array(482.013, 358.188, 485.447, 500.135, 614.802, 550.504, 810.552, 509.293, 819.71, 311.254, 676.618, 229.977, 538.105, 275.767)
+uv = PackedVector2Array(482.013, 358.188, 485.447, 500.135, 614.802, 550.504, 810.552, 509.293, 819.71, 311.254, 676.618, 229.977, 538.105, 275.767)
+bones = ["kua", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "kua/fu", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "kua/fu/you", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "kua/fu/you/xiong", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "kua/fu/gebo", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "kua/fu/Bone2D", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)]
+metadata/_edit_lock_ = true
+
+[node name="Polygon2D5" type="Polygon2D" parent="robot/Head"]
+position = Vector2(-672, -552)
+texture = ExtResource("1_aluhb")
+skeleton = NodePath("../../../Skeleton2D")
+polygon = PackedVector2Array(480.445, 582.259, 502.195, 677.272, 616.669, 701.311, 792.958, 680.706, 830.735, 565.087)
+uv = PackedVector2Array(480.445, 582.259, 502.195, 677.272, 616.669, 701.311, 792.958, 680.706, 830.735, 565.087)
+bones = ["kua", PackedFloat32Array(0, 0, 0, 0, 0), "kua/fu", PackedFloat32Array(0, 0, 0, 0, 0), "kua/fu/you", PackedFloat32Array(0, 0, 0, 0, 0), "kua/fu/you/xiong", PackedFloat32Array(0, 0, 0, 0, 0), "kua/fu/gebo", PackedFloat32Array(0, 0, 0, 0, 0), "kua/fu/Bone2D", PackedFloat32Array(0, 0, 0, 0, 0)]
+metadata/_edit_lock_ = true
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="kua" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(-8, 376)
+rotation = 0.00446236
+rest = Transform2D(1, 0, 0, 1, -8, 376)
+
+[node name="fu" type="Bone2D" parent="Skeleton2D/kua"]
+position = Vector2(0, -56)
+rest = Transform2D(1, 0, 0, 1, 0, -56)
+
+[node name="you" type="Bone2D" parent="Skeleton2D/kua/fu"]
+position = Vector2(-8, -144)
+rest = Transform2D(1, 0, 0, 1, -8, -144)
+
+[node name="xiong" type="Bone2D" parent="Skeleton2D/kua/fu/you"]
+position = Vector2(-112, -96)
+rest = Transform2D(1, 0, 0, 1, -112, -96)
+auto_calculate_length_and_angle = false
+length = 209.154
+bone_angle = 0.0
+
+[node name="gebo" type="Bone2D" parent="Skeleton2D/kua/fu"]
+position = Vector2(72, -112)
+rotation = 1.24298
+rest = Transform2D(1, 0, 0, 1, 72, -112)
+auto_calculate_length_and_angle = false
+length = 223.462
+bone_angle = -13.6693
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/kua/fu"]
+position = Vector2(-80, -112)
+rest = Transform2D(1, 0, 0, 1, -80, -112)
+auto_calculate_length_and_angle = false
+length = 249.608
+bone_angle = 91.985

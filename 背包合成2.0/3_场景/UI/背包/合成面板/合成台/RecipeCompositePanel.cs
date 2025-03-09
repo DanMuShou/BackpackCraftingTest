@@ -3,46 +3,32 @@ using System.IO;
 using System.Linq;
 using Godot;
 
-public partial class RecipeCompositePanel : VBoxContainer
+public partial class RecipeCompositePanel : BaseBackpackItemContainerPanel
 {
     [Export(PropertyHint.GlobalDir)] private string _testDir;
-    [Export] private GridContainer _gridContainer;
-    [Export] private BackpackItem _output;
+    [Export] private BackpackItem _outputItem;
     [Export] private Button _compositeBut;
     [Export] private Label _logLab;
 
     private ReadWritManager _sLManager;
     private ResourceManager _resManager;
-    private BackpackItem[] _itemCons;
 
     private string _fileName = "Recipe";
 
-    public void Init()
+    public override void Init()
     {
-        _itemCons = new BackpackItem[9];
         _sLManager = SystemManager.GetManager<ReadWritManager>();
         _resManager = SystemManager.GetManager<ResourceManager>();
 
+        base.Init();
+
         _compositeBut.Pressed += OnCompositeButPressed;
-
-        var nodes = _gridContainer.GetChildren();
-        for (var i = 0; i < nodes.Count; i++)
-        {
-            if (nodes[i] is not BackpackItem con) continue;
-
-            con.Index = _itemCons.Length;
-
-            con.Init();
-
-            _itemCons[i] = con;
-        }
-
-        _output.Init();
+        _outputItem.Init();
     }
 
     private void OnCompositeButPressed()
     {
-        if (!_itemCons.Select(con => con.HasItem).Any() || !_output.HasItem)
+        if (!Items.Select(con => con.HasItem).Any() || !_outputItem.HasItem)
         {
             _logLab.Text = "物品不正确";
             return;
@@ -57,15 +43,15 @@ public partial class RecipeCompositePanel : VBoxContainer
 
         var locInfo = 0;
         List<int> itemUIds = [];
-        for (var i = 0; i < _itemCons.Length; i++)
+        for (var i = 0; i < Items.Count; i++)
         {
-            if (!_itemCons[i].HasItem) continue;
+            if (!Items[i].HasItem) continue;
 
             locInfo |= 1 << i;
-            itemUIds.Add(_itemCons[i].ItemRes.UniqueItemId);
+            itemUIds.Add(Items[i].ItemRes.UniqueItemId);
         }
 
-        itemUIds.Add(_output.ItemRes.UniqueItemId);
+        itemUIds.Add(_outputItem.ItemRes.UniqueItemId);
         if (_resManager.AddItemsRecipe(locInfo, itemUIds.ToArray()))
         {
             writer.Write(locInfo);

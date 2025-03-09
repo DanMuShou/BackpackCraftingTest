@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b54vn5qbhwhxm"
-path="res://.godot/imported/17.png-5b6d621d20eed79405b5f2bb23bfa8fa.ctex"
+uid="uid://bbhonkdhad4qo"
+path="res://.godot/imported/Walk_Side-Sheet.png-ce717fdd448388b41ede8e398d2c73fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1_资产/测试/17.png"
-dest_files=["res://.godot/imported/17.png-5b6d621d20eed79405b5f2bb23bfa8fa.ctex"]
+source_file="res://1_资产/Animations/Entity/PLayer/WalkBase/Walk_Side-Sheet.png"
+dest_files=["res://.godot/imported/Walk_Side-Sheet.png-ce717fdd448388b41ede8e398d2c73fe.ctex"]
 
 [params]
 

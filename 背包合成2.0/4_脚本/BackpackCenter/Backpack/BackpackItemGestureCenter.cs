@@ -3,35 +3,39 @@ using Godot;
 using System.Collections.Generic;
 using System.Linq;
 
-public enum EGestureType
-{
-    None,
-    Left,
-    LeftShift,
-    Right,
-    RightShift,
-}
 
 public partial class BackpackItemGestureCenter : Node
 {
-    public BackpackPanel BackpackPanel { get; set; }
-    public BaseBackpackItem SourceItem { get; set; }
-    public EGestureType DragGestureMode { get; private set; }
-
+    public bool StartGesture => (DragGestureMode != EGestureType.None) && _startSelectCount != 0;
+    public BaseBackpackItem SelectItem { get; set; }
     public Type ActivePanelType { get; set; }
-    public bool IsMouseLeftOrRightPress => DragGestureMode != EGestureType.None;
+
+    private enum EGestureType
+    {
+        None,
+        Left,
+        LeftShift,
+        Right,
+        RightShift,
+    }
+
+    private EGestureType DragGestureMode { get; set; }
     private HashSet<BaseBackpackItem> _affectItems;
+
+    private int _startSelectCount;
+    private BackpackItemRes _startResource;
 
     public void Init()
     {
         _affectItems = [];
         DragGestureMode = EGestureType.None;
+        _startSelectCount = 0;
+        _startResource = null;
     }
 
     public override void _Input(InputEvent @event)
     {
-        if (!SourceItem.HasItem) return;
-
+        GD.Print(1);
         if (@event is InputEventMouseButton mouseEvent)
             SetCurrenMode(mouseEvent);
     }
@@ -40,6 +44,8 @@ public partial class BackpackItemGestureCenter : Node
     {
         if (mouseEvent.Pressed)
         {
+            if (StartGesture) return;
+
             DragGestureMode = mouseEvent.ButtonIndex switch
             {
                 MouseButton.Left when mouseEvent.ShiftPressed => EGestureType.LeftShift,
@@ -48,6 +54,12 @@ public partial class BackpackItemGestureCenter : Node
                 MouseButton.Right => EGestureType.Right,
                 _ => EGestureType.None
             };
+
+            if (DragGestureMode != EGestureType.None && SelectItem.HasItem)
+            {
+                _startSelectCount = SelectItem.ItemCount;
+                _startResource = SelectItem.ItemRes;
+            }
         }
         else if (mouseEvent.IsReleased())
         {
@@ -57,35 +69,87 @@ public partial class BackpackItemGestureCenter : Node
 
     private void UpdateAffectItem()
     {
-        if (ActivePanelType == null) return;
-        var averageCount = SourceItem.ItemCount / _affectItems.Count;
-        foreach (var item in _affectItems)
+        if (_affectItems.Count == 0 || _startSelectCount == 0) return;
+        switch (DragGestureMode)
         {
-            if (!item.HasItem)
-            {
-                item.SetRes(SourceItem.ItemRes, averageCount);
-            }
-            else
-            {
-                item.SetCount(averageCount);
-            }
+            case EGestureType.Left:
+                GestureLeft();
+                break;
+            case EGestureType.Right:
+                GestureRight();
+                break;
         }
     }
 
-    private void A()
+    private void GestureLeft()
     {
-        if (ActivePanelType == null) return;
-        var averageCount = SourceItem.ItemCount / _affectItems.Count;
-        SourceItem.DecreaseRes(averageCount * _affectItems.Count);
+        var averageCount = _startSelectCount / _affectItems.Count;
+        var remainderCount = _startSelectCount % _affectItems.Count;
+
+        foreach (var item in _affectItems)
+        {
+            if (averageCount > 0)
+            {
+                SetGestureItem(item, averageCount);
+                continue;
+            }
+
+            if (remainderCount > 0)
+            {
+                SetGestureItem(item, 1);
+                remainderCount--;
+            }
+            else if (remainderCount == 0)
+            {
+                break;
+            }
+        }
+
+        if (remainderCount > 0)
+            SetGestureItem(SelectItem, remainderCount);
+        else
+            SelectItem.RemoveRes();
+    }
+
+    private void GestureRight()
+    {
+        var remainderCount = _startSelectCount;
+
+        foreach (var item in _affectItems)
+        {
+            if (remainderCount > 0)
+            {
+                SetGestureItem(item, 1);
+                remainderCount -= 1;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        if (remainderCount > 0)
+            SetGestureItem(SelectItem, remainderCount);
+        else
+            SelectItem.RemoveRes();
+    }
+
+    private void SetGestureItem(BaseBackpackItem item, int count = 1)
+    {
+        if (item.HasItem)
+            item.SetCount(count);
+        else
+            item.SetRes(_startResource, count);
     }
 
     private void ResetMode()
     {
         DragGestureMode = EGestureType.None;
+        _startSelectCount = 0;
+        _startResource = null;
         ActivePanelType = null;
         _affectItems.Clear();
     }
-
 
     public void AddAffectItem(BaseBackpackItem affectItem)
     {

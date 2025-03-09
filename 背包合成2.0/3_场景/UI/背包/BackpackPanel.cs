@@ -14,20 +14,35 @@ public partial class BackpackPanel : Control
     [Export] private ItemComposite _itemComposite;
     [Export] private ItemInfoPan _itemInfoPan;
 
+    public bool Open
+    {
+        get => Open;
+        set
+        {
+            ProcessMode = value ? ProcessModeEnum.Inherit : ProcessModeEnum.Disabled;
+            Visible = value;
+        }
+    }
+
+
     public void Init()
     {
-        SignalCenter.OnIsShowInfo += (isShow, res) => _itemInfoPan.DisplayItemInfo(isShow, res);
-
-        GestureCenter.BackpackPanel = this;
-        GestureCenter.SourceItem = BackpackSelectItem;
+        GestureCenter.SelectItem = BackpackSelectItem;
         GestureCenter.Init();
 
-        _backpackInventory.BackpackPanel = this;
+        _backpackInventory.GestureCenter = GestureCenter;
+        _backpackInventory.SelectItem = BackpackSelectItem;
         _backpackInventory.Init();
 
+        _recipeCompositePanel.GestureCenter = GestureCenter;
+        _recipeCompositePanel.SelectItem = BackpackSelectItem;
         _recipeCompositePanel.Init();
-        _itemRecipeSearchPanel.Init();
+
+        _itemComposite.GestureCenter = GestureCenter;
+        _itemComposite.SelectItem = BackpackSelectItem;
         _itemComposite.Init();
+
+        _itemRecipeSearchPanel.Init();
         _itemInfoPan.Init();
         BackpackSelectItem.Init();
     }

@@ -10,18 +10,17 @@ public partial class BackpackInventory : BaseBackpackItemContainerPanel
     public override void Init()
     {
         _owner = GetOwner<BackpackPanel>();
-        GesturePanelType = GetType();
         base.Init();
         AddItems(text);
     }
 
-    public void AddItems(BackpackItemRes[] itemsRes)
+    private void AddItems(BackpackItemRes[] itemsRes)
     {
         foreach (var res in itemsRes)
         {
-            foreach (var con in BackpackItems)
+            foreach (var con in Items)
             {
-                if (con.SetRes(res, 100))
+                if (con.SetRes(res, 5))
                     break;
             }
         }

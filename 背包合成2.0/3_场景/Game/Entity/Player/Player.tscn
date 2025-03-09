@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://brws5oao2us14"]
+
+[ext_resource type="SpriteFrames" uid="uid://dxefgxx6nsoon" path="res://2_资源/动画/Player.tres" id="1_gvjru"]
+[ext_resource type="Script" uid="uid://d1q675hn6kojr" path="res://3_场景/Game/Entity/Player/Player.cs" id="1_tk1wc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5xpux"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_animated")]
+collision_layer = 0
+collision_mask = 0
+floor_stop_on_slope = false
+floor_block_on_wall = false
+platform_floor_layers = 4294901760
+script = ExtResource("1_tk1wc")
+_animated = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_gvjru")
+animation = &"IdleUp"
+autoplay = "IdleDown"
+frame_progress = 0.658814
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5xpux")

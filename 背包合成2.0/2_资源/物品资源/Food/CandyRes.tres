@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BackpackItemRes" load_steps=3 format=3 uid="uid://cl6bofodlqbd8"]
 
-[ext_resource type="Texture2D" uid="uid://bdx51844cjpdd" path="res://1_资产/测试/20.png" id="1_7fa88"]
+[ext_resource type="Texture2D" uid="uid://bdx51844cjpdd" path="res://1_资产/测试/Item/20.png" id="1_7fa88"]
 [ext_resource type="Script" uid="uid://m3jr7vbhqp3s" path="res://4_脚本/自定义资源/BackpackItemRes.cs" id="2_lgdoc"]
 
 [resource]

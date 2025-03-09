@@ -1,13 +1,11 @@
 ﻿using Godot;
 
-public partial class BaseBackpackItem : Control, IBackpackContainer
+public partial class BaseBackpackItem : Control, IBackpackItem
 {
     [Export] private BackpackItemInfo _itemInfo;
     public BackpackItemRes ItemRes { get; private set; }
-    public bool LockCon { get; set; } = false;
     public bool IsCanChange { get; set; } = true;
     private int _itemCount = int.MinValue;
-    private Rect2 _rect;
 
     public int ItemCount
     {
@@ -25,12 +23,6 @@ public partial class BaseBackpackItem : Control, IBackpackContainer
     public virtual void Init()
     {
         ItemCount = 0;
-    }
-
-    public override void _Process(double delta)
-    {
-        _rect = new Rect2(GlobalPosition, Size);
-        SetProcess(false);
     }
 
     protected virtual void RefreshItem()
@@ -122,6 +114,4 @@ public partial class BaseBackpackItem : Control, IBackpackContainer
             other.SetRes(ItemRes);
         }
     }
-
-    public bool ContainsPoint(Vector2 point) => _rect.HasPoint(point);
 }

@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://bkuo7xx1kqmow" path="res://3_场景/UI/背包/合成面板/合成台/RecipeCompositePanel.cs" id="1_tt27m"]
 [ext_resource type="PackedScene" uid="uid://dys04wsivitri" path="res://3_场景/UI/背包/背包物品/BackpackItem.tscn" id="2_fig7h"]
 
-[node name="RecipeCompositePanel" type="VBoxContainer" node_paths=PackedStringArray("_gridContainer", "_output", "_compositeBut", "_logLab")]
+[node name="RecipeCompositePanel" type="VBoxContainer" node_paths=PackedStringArray("_outputItem", "_compositeBut", "_logLab", "_itemsContainer")]
 theme_override_constants/separation = 10
 script = ExtResource("1_tt27m")
 _testDir = "E:/AllProject/Game/Godot/GitProject/BackpackCraftingTest/背包合成/5_测试/配方测试存储"
-_gridContainer = NodePath("HBoxContainer/GridContainer")
-_output = NodePath("HBoxContainer/VBoxContainer/OutputCon")
+_outputItem = NodePath("HBoxContainer/VBoxContainer/OutputCon")
 _compositeBut = NodePath("HBoxContainer/VBoxContainer/CompositeBut")
 _logLab = NodePath("ScrollContainer/LogLab")
+_itemsContainer = NodePath("HBoxContainer/GridContainer")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

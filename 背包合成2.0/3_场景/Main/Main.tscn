@@ -1,14 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccuigvdu0hqcq"]
+[gd_scene load_steps=5 format=3 uid="uid://ccuigvdu0hqcq"]
 
 [ext_resource type="Script" uid="uid://bu700vs1a6tlx" path="res://3_场景/Main/Main.cs" id="1_6b850"]
 [ext_resource type="PackedScene" uid="uid://jdq5cnj6y8xs" path="res://3_场景/Manager/SystemManager.tscn" id="1_87hb1"]
 [ext_resource type="PackedScene" uid="uid://dw8mg7dvvilj6" path="res://3_场景/UI/背包/BackpackPanel.tscn" id="3_6b850"]
+[ext_resource type="PackedScene" uid="uid://brws5oao2us14" path="res://3_场景/Game/Entity/Player/Player.tscn" id="4_8wf01"]
 
 [node name="Main" type="Node" node_paths=PackedStringArray("_systemManager", "_backpackPanel")]
 script = ExtResource("1_6b850")
 _systemManager = NodePath("SystemManager")
-_backpackPanel = NodePath("BackpackPanel")
+_backpackPanel = NodePath("UI/BackpackPanel")
 
 [node name="SystemManager" parent="." instance=ExtResource("1_87hb1")]
 
-[node name="BackpackPanel" parent="." instance=ExtResource("3_6b850")]
+[node name="UI" type="Node" parent="."]
+
+[node name="BackpackPanel" parent="UI" instance=ExtResource("3_6b850")]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("4_8wf01")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+process_callback = 0
+limit_left = -3000
+limit_top = -3000
+limit_right = 3000
+limit_bottom = 3000
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
