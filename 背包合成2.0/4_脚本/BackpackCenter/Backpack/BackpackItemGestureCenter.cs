@@ -1,14 +1,12 @@
 using System;
 using Godot;
 using System.Collections.Generic;
-using System.Linq;
 
 
 public partial class BackpackItemGestureCenter : Node
 {
-    public bool StartGesture => (DragGestureMode != EGestureType.None) && _startSelectCount != 0;
-    public BaseBackpackItem SelectItem { get; set; }
-    public Type ActivePanelType { get; set; }
+    public bool IsGesturing => (DragGestureMode != EGestureType.None) && _startSelectCount != 0;
+    public IBackpackItem SelectItem { get; set; }
 
     private enum EGestureType
     {
@@ -20,7 +18,10 @@ public partial class BackpackItemGestureCenter : Node
     }
 
     private EGestureType DragGestureMode { get; set; }
-    private HashSet<BaseBackpackItem> _affectItems;
+    private HashSet<IBackpackItem> _affectItems;
+
+    private Type _originatePanelType;
+    private IBackpackItem _originateItem;
 
     private int _startSelectCount;
     private BackpackItemRes _startResource;
@@ -30,21 +31,25 @@ public partial class BackpackItemGestureCenter : Node
         _affectItems = [];
         DragGestureMode = EGestureType.None;
         _startSelectCount = 0;
+
+        _originatePanelType = null;
+        _originateItem = null;
         _startResource = null;
     }
 
     public override void _Input(InputEvent @event)
     {
-        GD.Print(1);
         if (@event is InputEventMouseButton mouseEvent)
             SetCurrenMode(mouseEvent);
     }
 
     private void SetCurrenMode(InputEventMouseButton mouseEvent)
     {
+        if (_originateItem == null) return;
+        GD.Print(1);
         if (mouseEvent.Pressed)
         {
-            if (StartGesture) return;
+            if (IsGesturing) return;
 
             DragGestureMode = mouseEvent.ButtonIndex switch
             {
@@ -134,7 +139,7 @@ public partial class BackpackItemGestureCenter : Node
             SelectItem.RemoveRes();
     }
 
-    private void SetGestureItem(BaseBackpackItem item, int count = 1)
+    private void SetGestureItem(IBackpackItem item, int count = 1)
     {
         if (item.HasItem)
             item.SetCount(count);
@@ -146,16 +151,37 @@ public partial class BackpackItemGestureCenter : Node
     {
         DragGestureMode = EGestureType.None;
         _startSelectCount = 0;
+
         _startResource = null;
-        ActivePanelType = null;
+        _originatePanelType = null;
+        _originateItem = null;
+
         _affectItems.Clear();
     }
 
-    public void AddAffectItem(BaseBackpackItem affectItem)
+    public void AddAffectItem(IBackpackItem affectItem)
     {
         if (_affectItems.Add(affectItem))
         {
             UpdateAffectItem();
         }
+    }
+
+    public bool TryAddAffectItems(IBackpackItem item, Type panelType)
+    {
+        if (!item.HasItem && !SelectItem.HasItem) return false;
+        if (panelType != _originatePanelType) return false;
+
+        return _affectItems.Add(item);
+    }
+
+    public bool TrySetOriginateItemItem(IBackpackItem item, Type panelType)
+    {
+        if (!item.HasItem && !SelectItem.HasItem) return false;
+
+        _originateItem = item;
+        _originatePanelType = panelType;
+
+        return true;
     }
 }

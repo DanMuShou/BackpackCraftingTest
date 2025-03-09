@@ -2,19 +2,20 @@ using System;
 using System.Collections.Generic;
 using Godot;
 
-public partial class BaseBackpackItemContainerPanel : Control
+public partial class BaseBackpackItemContainerPanel : Control, IBackpackItemContainer
 {
     [Export] private Control _itemsContainer;
 
-    public BaseBackpackItem SelectItem { get; set; }
+    public Type ContainerType { get; private set; }
+
+    // public BaseBackpackItem SelectItem { get; set; }
     public BackpackItemGestureCenter GestureCenter { get; set; }
 
-    private Type _gesturePanelType;
     protected List<BackpackItem> Items;
 
     public virtual void Init()
     {
-        _gesturePanelType = GetType();
+        ContainerType = GetType();
         Items = [];
 
         var nodes = _itemsContainer.GetChildren();
@@ -24,79 +25,88 @@ public partial class BaseBackpackItemContainerPanel : Control
             {
                 Items.Add(item);
                 item.Index = i;
-                InitGesture(item);
+
+                var selectButton = item.SelectButton;
+                selectButton.MouseEntered += () => HandleMouseEnterOrExit(true, item);
+
                 item.Init();
             }
         }
     }
 
-    private void InitGesture(BackpackItem item)
-    {
-        var selectButton = item.SelectButton;
-        selectButton.MouseEntered += () => HandleMouseEnterOrExit(true, item);
-        selectButton.MouseExited += () => HandleMouseEnterOrExit(false, item);
-        selectButton.Pressed += () => SelectButtonOnPressed(item);
-    }
 
-    private void HandleMouseEnterOrExit(bool isMouseEntered, BaseBackpackItem item)
+    // private void HandleMouseEnterOrExit(bool isMouseEntered, IBackpackItem item)
+    // {
+    //     if (!GestureCenter.IsGesturing || item.HasItem) return;
+    //
+    //     if (isMouseEntered)
+    //     {
+    //         if (GestureCenter._originatePanel == this)
+    //         {
+    //             GestureCenter.AddAffectItem(item);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         if (GestureCenter._originatePanel != null) return;
+    //
+    //         GestureCenter._originatePanel = this;
+    //         GestureCenter.AddAffectItem(item);
+    //     }
+    // }
+    private void HandleMouseEnterOrExit(bool isMouseEntered, IBackpackItem item)
     {
-        if (!GestureCenter.StartGesture || item.HasItem) return;
-
-        if (isMouseEntered)
+        if (isMouseEntered && !GestureCenter.IsGesturing)
         {
-            if (GestureCenter.ActivePanelType == _gesturePanelType)
-            {
-                GestureCenter.AddAffectItem(item);
-            }
+            var a = GestureCenter.TrySetOriginateItemItem(item, ContainerType);
+            GD.Print($"1 : {a}");
         }
-        else
+        else if (isMouseEntered && GestureCenter.IsGesturing)
         {
-            if (GestureCenter.ActivePanelType != null) return;
-
-            GestureCenter.ActivePanelType = _gesturePanelType;
-            GestureCenter.AddAffectItem(item);
-        }
-    }
-
-    private void SelectButtonOnPressed(BaseBackpackItem item)
-    {
-        if (Input.IsActionJustReleased("MouseLeft"))
-            HandleLeftMouseClick(item);
-        else if (Input.IsActionJustReleased("MouseRight"))
-            HandleRightMouseClick(item);
-    }
-
-    private void HandleLeftMouseClick(BaseBackpackItem item)
-    {
-        if (!SelectItem.HasItem && !item.HasItem) return;
-
-        if (SelectItem.HasItem && (item.HasItem && SelectItem.ItemRes == item.ItemRes))
-        {
-            item.IncreaseRes(SelectItem.ItemCount);
-            SelectItem.RemoveRes();
-        }
-        else
-        {
-            SelectItem.SwapRes(item);
+            var b = GestureCenter.TryAddAffectItems(item, ContainerType);
+            GD.Print($"2 : {b}");
         }
     }
 
-    private void HandleRightMouseClick(BaseBackpackItem item)
-    {
-        if (!SelectItem.HasItem && item.HasItem)
-        {
-            SelectItem.SetRes(item.ItemRes, item.ItemCount / 2);
-            item.DecreaseRes(item.ItemCount / 2);
-        }
-        else if (SelectItem.HasItem && item.HasItem && SelectItem.ItemRes == item.ItemRes)
-        {
-            item.IncreaseRes();
-            SelectItem.DecreaseRes();
-        }
-        else if (SelectItem.HasItem && !item.HasItem)
-        {
-            item.SetRes(SelectItem.ItemRes);
-            SelectItem.DecreaseRes();
-        }
-    }
+    // private void SelectButtonOnPressed(IBackpackItem item)
+    // {
+    //     if (Input.IsActionJustReleased("MouseLeft"))
+    //         HandleLeftMouseClick(item);
+    //     else if (Input.IsActionJustReleased("MouseRight"))
+    //         HandleRightMouseClick(item);
+    // }
+    //
+    // private void HandleLeftMouseClick(IBackpackItem item)
+    // {
+    //     if (!SelectItem.HasItem && !item.HasItem) return;
+    //
+    //     if (SelectItem.HasItem && (item.HasItem && SelectItem.ItemRes == item.ItemRes))
+    //     {
+    //         item.IncreaseRes(SelectItem.ItemCount);
+    //         SelectItem.RemoveRes();
+    //     }
+    //     else
+    //     {
+    //         SelectItem.SwapRes(item);
+    //     }
+    // }
+    //
+    // private void HandleRightMouseClick(IBackpackItem item)
+    // {
+    //     if (!SelectItem.HasItem && item.HasItem)
+    //     {
+    //         SelectItem.SetRes(item.ItemRes, item.ItemCount / 2);
+    //         item.DecreaseRes(item.ItemCount / 2);
+    //     }
+    //     else if (SelectItem.HasItem && item.HasItem && SelectItem.ItemRes == item.ItemRes)
+    //     {
+    //         item.IncreaseRes();
+    //         SelectItem.DecreaseRes();
+    //     }
+    //     else if (SelectItem.HasItem && !item.HasItem)
+    //     {
+    //         item.SetRes(SelectItem.ItemRes);
+    //         SelectItem.DecreaseRes();
+    //     }
+    // }
 }

@@ -1,8 +1,8 @@
 using Godot;
-using System;
 
 public partial class Main : Node
 {
+    [Export] private bool _isDebug;
     [Export] private SystemManager _systemManager;
     [Export] private BackpackPanel _backpackPanel;
 
@@ -11,6 +11,6 @@ public partial class Main : Node
         _systemManager.Init();
         _backpackPanel.Init();
 
-        _backpackPanel.Open = false;
+        _backpackPanel.Open = _isDebug;
     }
 }

@@ -31,15 +31,15 @@ public partial class BackpackPanel : Control
         GestureCenter.Init();
 
         _backpackInventory.GestureCenter = GestureCenter;
-        _backpackInventory.SelectItem = BackpackSelectItem;
+        // _backpackInventory.SelectItem = BackpackSelectItem;
         _backpackInventory.Init();
 
         _recipeCompositePanel.GestureCenter = GestureCenter;
-        _recipeCompositePanel.SelectItem = BackpackSelectItem;
+        // _recipeCompositePanel.SelectItem = BackpackSelectItem;
         _recipeCompositePanel.Init();
 
         _itemComposite.GestureCenter = GestureCenter;
-        _itemComposite.SelectItem = BackpackSelectItem;
+        // _itemComposite.SelectItem = BackpackSelectItem;
         _itemComposite.Init();
 
         _itemRecipeSearchPanel.Init();

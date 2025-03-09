@@ -93,7 +93,7 @@ public partial class BaseBackpackItem : Control, IBackpackItem
         ItemCount += addCount;
     }
 
-    public void SwapRes(BaseBackpackItem other)
+    public void SwapRes(IBackpackItem other)
     {
         if (IsCanChange)
         {
